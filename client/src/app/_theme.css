@@ -1,0 +1,29 @@
+
+/* Default variables for different light/dark/gray modes */
+
+:root {
+  /* Shadows */
+  --shadow: 0 1px 3px rgba(0,0,0,.15), 0 3px 12px rgba(0,0,0,.1);
+
+  /* Background */
+  --color-bg: #F0F0F0;
+  --color-bg-alt: #E4E4E4;
+  --color-bg-active: #D4D4D4;
+
+  /* Texts */
+  --color-text: #131313;
+  --color-text-bold: #5D5D5D;
+  --color-text-medium: #999999;
+  --color-text-light: #CCCCCC;
+  --color-solid: #FFFFFF;
+  --color-contrast: #2F2F2F;
+}
+
+[data-theme="normal"] {
+  --color-highlight: #FF9021;
+  --color-primary: #54b869;
+  --color-secondary: #41877F;
+  --color-primary-hover: #489d5b;
+  --color-primary-active: #478a56;
+  --color-secondary-opaque: rgba(47, 152, 140, .4);
+}

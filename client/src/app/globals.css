@@ -1,0 +1,274 @@
+@import url('./_sizing.css');
+@import url('./_theme.css');
+
+/* Fonts */
+
+@font-face  {
+  font-family: 'ttnp-normal';
+  src: url('/ttnp-compact-normal.woff2') format('woff2'),
+       url('/ttnp-compact-normal.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ttnp-bold';
+  src: url('/ttnp-compact-bold.woff2') format('woff2'),
+       url('/ttnp-compact-bold.woff') format('woff');
+ font-weight: normal;
+  font-style: normal;
+}
+
+/* Main elements */
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--color-bg);
+}
+
+body, input, textarea, button {
+  /* Can't use this because numbers, etc will get converted to emoji */
+  /* font-family: 'Noto Color Emoji', 'ttnp-normal', sans-serif; */
+
+  /* Defaults */
+  font-family: 'ttnp-normal', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--color-text);
+
+   /* See if you like it better without it later */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-secondary-opaque);
+  color: var(--color-contrast);
+}
+
+a {
+  cursor: pointer;
+  color: var(--color-primary);
+  text-decoration: none;
+  position: relative;
+}
+
+a.em:before {
+  content: '';
+  position: absolute;
+  bottom: -.25em;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--color-primary);
+}
+
+a.bg_alt:hover, button.bg_alt:hover, .link.bg_alt:hover {
+  background-color: var(--color-bg-active);
+}
+
+/* a, a .link {
+  transition: color .2s ease, background-color .2s ease;
+} */
+
+a.link, a .link, button.link, [role="button"].link, [role="button"] .link {
+  transition: color .2s ease, background-color .2s ease;
+}
+
+button {
+  all: unset;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+button, .link[role="button"] {
+  cursor: pointer;
+  user-select: none;
+}
+
+button.is_disabled, .link[role="button"].is_disabled {
+  cursor: default;
+}
+
+main, section, article, nav, div, p, button, input, textarea, ul, ol, li, span, i, a {
+  box-sizing: border-box;
+}
+
+ul, ol, figure {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  position: relative;
+  max-width: 100%;
+}
+
+img:after {
+  content: "❖";
+  font-size: 1.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-active);
+}
+
+/*
+Attempted to use this to stop click->drag->move on input fields when disabled
+But not using this because even when not disabled, you can still click->drag->move the input content
+input:disabled {
+  pointer-events: none;
+} */
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.tfd p:last-child {
+  /* Use this to fix minor visual typography issues */
+  margin-bottom: .1em;
+}
+
+.img_auto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+}
+
+.bg_cover {
+  background-size: cover;
+  background-position: center;
+}
+
+/* Miscelaneous */
+
+.scroll_lock { overscroll-behavior-x: none; } /* Use this on <body> when Modal is used */
+.of { overflow: hidden; }
+.hidden { display: none !important; }
+
+.z1 { z-index: 10; }
+.z2 { z-index: 20; }
+.z3 { z-index: 30; }
+.z4 { z-index: 40; }
+.z5 { z-index: 50; }
+.z6 { z-index: 60; }
+.z7 { z-index: 70; }
+.z8 { z-index: 80; }
+.z9 { z-index: 90; }
+.z10 { z-index: 100; }
+
+/* Flex */
+
+.f { flex: 1; min-width: 0; }
+.fs { flex: 1; min-width: 0; align-self: stretch; }
+.f_width { width: 100%; }
+
+.f_wrap { flex-wrap: wrap; }
+.f_shrink { flex-shrink: 0; }
+
+.h_spread { display: flex; justify-content: space-between; align-items: center; }
+.h_top { display: flex; justify-content: space-between; align-items: flex-start; }
+.h_center { display: flex; justify-content: center; align-items: center; }
+.h_bottom { display: flex; justify-content: flex-start; align-items: flex-end; }
+.h_bottom_spread { display: flex; justify-content: space-between; align-items: flex-end; }
+.h_left { display: flex; justify-content: flex-start; align-items: flex-start; }
+.h_right { display: flex; justify-content: flex-end; align-items: flex-start; }
+.h_item { display: flex; justify-content: flex-start; align-items: center; }
+.h_ritem { display: flex; justify-content: flex-end; align-items: center; }
+
+.v_spread { display: flex; flex-direction: column; justify-content: space-between; }
+.v_center { flex-direction: column; display: flex; justify-content: center; align-items: center; }
+.v_top { display: flex; flex-direction: column; justify-content: flex-start; align-items: center; }
+.v_left { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
+.v_bottom { display: flex; flex-direction: column; justify-content: flex-end; }
+
+.h_wrap { display: flex; justify-content: flex-start; align-items: flex-start; flex-wrap: wrap; }
+
+.a_c { text-align: center; }
+.a_r { text-align: right; }
+.u { text-decoration: underline; }
+
+/* Opacity */
+
+.op_75 { opacity: .75; }
+.op_50 { opacity: .5; }
+.op_30 { opacity: .3; }
+.op_20 { opacity: .2; }
+.op_10 { opacity: .1; }
+.invis { visibility: hidden; }
+
+/* Colors */
+
+.cl_t { color: var(--color-text); }
+.cl_l { color: var(--color-text-light); }
+.cl_m { color: var(--color-text-medium); }
+.cl_b { color: var(--color-text-bold); }
+
+a.text, button.text {
+  position: relative;
+  color: var(--color-text);
+}
+
+a.text:before, button.text:before {
+  content: ' ';
+  position: absolute;
+  bottom: -.25em; left: 0; right: 0;
+  border-bottom: .1875em dotted var(--color-text-light);
+}
+
+a.text.cl_m, button.text.cl_m {
+  color: var(--color-text-medium);
+}
+
+a.text.cl_b, button.text.cl_b {
+  color: var(--color-text-bold);
+}
+
+a.text:hover:before, button.text:hover:before {
+  border-bottom: .3125em solid var(--color-secondary-opaque);
+}
+
+/* Backgrounds */
+
+.bg_primary {
+  color: var(--color-solid) !important;
+  background-color: var(--color-primary) !important;
+}
+
+.bg_primary_hover,
+.bg_primary.btn:hover, button.bg_primary.pill:hover, a.bg_primary.pill:hover, .bg_primary.pill[role="button"]:hover {
+  background-color: var(--color-primary-hover) !important;
+}
+
+.bg_secondary_hover,
+.bg_secondary.btn:hover, button.bg_secondary.pill:hover, a.bg_secondary.pill:hover, .bg_secondary.pill[role="button"]:hover {
+  background-color: var(--color-secondary-opaque) !important;
+}
+
+.bg_primary_active,
+.bg_primary_hover[role="button"]:hover,
+.bg_primary.btn:active, button.bg_primary.pill:active, a.bg_primary.pill:active, .bg_primary.pill[role="button"]:active,
+.bg_primary.btn:disabled, button.bg_primary.pill:disabled, a.bg_primary.pill:disabled, .bg_primary.pill[role="button"]:disabled,
+.bg_primary.btn.is_loading, .bg_primary.pill.is_loading {
+  background-color: var(--color-primary-active) !important;
+}
+
+.bg_primary.btn.is_loading, .bg_primary.pill.is_loading {
+  color: var(--color-solid-active) !important;
+}
+
+.bg_secondary {
+  color: var(--color-solid) !important;
+  background-color: var(--color-secondary) !important;
+}
