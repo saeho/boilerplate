@@ -1,0 +1,64 @@
+
+/* CK Canvas */
+
+.ck_canvas {
+  background-image: url('/dot.svg');
+  background-size: 16px 16px;
+}
+
+/* Canvas controls */
+
+.cv_ctrl {
+  position: fixed;
+  top: 12px; left: 50%;
+  transform: translateX(-50%);
+  transition: ease .2s box-shadow;
+
+  padding: 4px;
+  border-radius: var(--radius-default);
+  background-color: var(--color-solid);
+}
+
+.cv_ctrl:hover, .cv_ctrl.active {
+  box-shadow: var(--shadow);
+}
+
+/* Control item */
+
+.cv_item {
+  min-width: 2rem; height: 2rem;
+  margin-right: 4px;
+  padding: .25rem;
+  border-radius: 9px;
+  transition: .15s ease background-color, .15s ease color;
+}
+
+.cv_item:last-child,
+.cv_ctrl_grp:last-child,
+.cv_ctrl_grp .cv_item {
+  margin-right: 0;
+}
+
+.cv_item:hover {
+  background-color: var(--color-bg);
+}
+
+/* Custom styles for each item type */
+
+.cv_item.BUTTON {
+  padding: 0 .5rem;
+  margin-left: .4rem;
+}
+
+/* Control items grouped */
+
+.cv_ctrl_grp {
+  margin-left: .4rem;
+  /* margin: 0 .25rem; */
+  border-radius: 8px;
+  background-color: var(--color-bg);
+}
+
+.cv_ctrl_grp .cv_item:hover {
+  background-color: var(--color-bg-alt);
+}

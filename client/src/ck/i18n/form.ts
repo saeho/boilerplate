@@ -1,7 +1,7 @@
 const i18nForm = {
   en: {
-    download: 'Download',
-    cancel: 'Cancel',
+    publish: 'Publish',
+    submit: 'Submit',
   },
 };
 

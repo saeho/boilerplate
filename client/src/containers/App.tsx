@@ -1,9 +1,9 @@
 'use client';
 
 import { useReducer, useEffect } from 'react';
-import AppContext, { appReducer, type AppContextData, DEFAULT_APP_CONTEXT } from '../platform-agnostic/data-context/appContext';
-import DataContext, { dataReducer, DEFAULT_DATA_CONTEXT } from '../platform-agnostic/data-context/dataContext';
-import composeAuthenticate from '../platform-agnostic/data-api/AuthenticateCmp';
+import AppContext, { appReducer, type AppContextData, DEFAULT_APP_CONTEXT } from '../ck/data-context/appContext';
+import DataContext, { dataReducer, DEFAULT_DATA_CONTEXT } from '../ck/data-context/dataContext';
+import composeAuthenticate from '../ck/data-api/AuthenticateCmp';
 import { fetchPlatformAuthToken } from '../lib/platform';
 
 /**
@@ -37,7 +37,6 @@ function AppEvents(p: AppProps & AppContextData) {
   }, [authToken]);
 
   if (init !== 2) {
-    // Loading page
     return null;
   }
 

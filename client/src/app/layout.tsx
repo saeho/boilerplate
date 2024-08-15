@@ -14,7 +14,7 @@ type LayoutProps = {
  */
 
 export const metadata = {
-  title: 'Saeho',
+  title: 'ClassKick',
   description: 'Engineering Take Home Project',
 };
 

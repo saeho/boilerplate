@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import type { AuthType } from '../../typescript/apiResultTypes.ts';
+import type { AuthType, CanvasSessionType } from '../../typescript/apiResultTypes.ts';
 
 /**
  * Type; Reducer action for App Context
@@ -15,6 +15,7 @@ export type AppContextDispatch = (action: AppContextAction) => void;
 export type AppContextData = {
   init: 0 | 1 | 2; // 0: Not initialized, 1: Initializing, 2: Initialized
   auth: AuthType;
+  canvasSession: CanvasSessionType;
 };
 
 /**
@@ -41,6 +42,7 @@ export const appReducer = (state: AppContextData, action: AppContextAction) => {
         ...DEFAULT_APP_CONTEXT, // Reset context every time user/auth changes
         init: data.auth.token ? 2 : 1,
         auth: data.auth,
+        canvasSession: data.canvasSession,
       };
     }
     default:

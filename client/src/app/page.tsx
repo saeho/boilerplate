@@ -1,15 +1,15 @@
-import { AuthStatus } from '../containers/Auth';
-import type { AppProps } from 'next/app'
+import CKCanvas from '../containers/CKCanvas';
 
 /**
  * Index page
  */
 
-function Page(p: AppProps) {
+function Page() {
+  // return <main className={styles.main} />;
 
   return (
-    <main className='p_l'>
-      <AuthStatus />
+    <main className='of scroll_lock'>
+      <CKCanvas />
     </main>
   );
 }

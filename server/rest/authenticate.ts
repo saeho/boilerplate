@@ -1,5 +1,6 @@
 import type { AuthenticateResult } from '../typescript/apiResultTypes.ts';
 import { createAuth, fetchAuth } from '../libs/authLib.ts';
+import { fetchCanvasSession, createCanvasSession } from '../libs/canvasLib.ts';
 
 /**
  * Types
@@ -18,17 +19,20 @@ async function authenticate(args: AuthenticateArgs): Promise<AuthenticateResult>
 
   const { authToken } = args;
 
-  let auth;
+  let auth; let canvasSession;
   if (authToken) {
     auth = await fetchAuth(authToken);
+    canvasSession = await fetchCanvasSession(auth.userId);
   }
 
   if (!auth) {
     auth = await createAuth();
+    canvasSession = await createCanvasSession(auth.userId);
   }
 
   return {
     auth,
+    canvasSession
   };
 }
 
