@@ -9,6 +9,7 @@ The boilerplate contains minimal client and server code with my usual code and p
 - Install Deno (https://docs.deno.com/runtime/manual/getting_started/installation/)
 - (Deno is identical to NodeJS, there is no learning curve or code difference.)
 - Change directory to ./server -> "cd ./server"
+- Add the Google service account json file to /server
 - Start server -> "deno task dev"
 
 ## How to run client
