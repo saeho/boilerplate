@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext, useState, useEffect } from 'react';
 import dataContext from '../data-context/dataContext';
 
@@ -18,8 +20,29 @@ type APIParams = Partial<{
  */
 
 function fetchData(method: string, apiName: string, params: any, authToken: string, onCompleted: any) {
-  const isGETRequest = method === 'GET';
-  fetch(ENV.API_URL + apiName, {
+
+  let body;
+  let fetchUrl = ENV.API_URL + apiName;
+
+  if (method === 'GET') {
+    const ents = params && Object.entries(params);
+    if (ents?.length) {
+      let urlParams = '';
+      for (const [key, value] of ents) {
+        if (typeof value !== 'undefined') {
+          urlParams += `${(urlParams ? '&' : '?')}${encodeURIComponent(key)}=${encodeURIComponent(value)}`;
+        }
+      }
+
+      if (urlParams) {
+        fetchUrl += urlParams;
+      }
+    }
+  } else {
+    body = JSON.stringify(params || null);
+  }
+
+  fetch(fetchUrl, {
     method,
     headers: new Headers({
       'Content-Type': 'application/json; charset=utf-8',
@@ -27,9 +50,8 @@ function fetchData(method: string, apiName: string, params: any, authToken: stri
       // api_key: ENV.GQL_API_KEY,
       // 'Access-Control-Allow-Origin': ENV.APP_URL,
       // recaptcha: ? // Not sure if we're going to do this on this later any more
-
     }),
-    body: isGETRequest ? undefined : JSON.stringify(params || null),
+    body,
   }).then(async(res) => {
 
     if (res.status === 200) {
@@ -74,7 +96,7 @@ export function useQuery(apiName: string, params: any) {
     fetchData('GET', apiName, params, authToken, (fetchedData: any, error: any) => {
       setQryState({...qryState, data: fetchedData, error, loading: false});
     });
-  }, []);
+  }, [JSON.stringify(params)]);
 
   return [qryState, dispatchData];
 }

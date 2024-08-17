@@ -42,6 +42,10 @@ body, input, textarea, button {
   -moz-osx-font-smoothing: grayscale;
 }
 
+td {
+  vertical-align: top;
+}
+
 ::selection {
   background-color: var(--color-secondary-opaque);
   color: var(--color-contrast);

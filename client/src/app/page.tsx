@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { AuthStatus } from '../containers/Auth.tsx';
+import ClinicalTrials from '../containers/ClinicalTrials.tsx';
 
 /**
  * Index page
@@ -9,7 +9,7 @@ function Page(p: AppProps) {
 
   return (
     <main className='p_l'>
-      <AuthStatus />
+      <ClinicalTrials />
     </main>
   );
 }

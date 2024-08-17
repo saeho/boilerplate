@@ -77,10 +77,14 @@ function composeAPI(
     }
 
     let args;
-    if (ctx.request.method === 'POST') {
-      args = await ctx.request.body.json();
-    } else {
-      args = {};
+    switch (ctx.request.method) {
+      case 'POST':
+        args = await ctx.request.body.json();
+        break;
+      case 'GET':
+        args = Object.fromEntries(ctx.request.url.searchParams.entries());
+        break;
+      default:
     }
 
     const result = await apiFn(args, apiUser, context, router);
