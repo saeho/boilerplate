@@ -11,7 +11,7 @@ type StudyPhase = null | 'NA' | 'EARLY_PHASE1' | 'PHASE1' | 'PHASE2' | 'PHASE3' 
 
 // If this was a real database,
 // this type (NSLCStudyData) would be the output of a JOIN query.
-// For a database, I would create several databases for trials, studies, organization, etc.
+// For a database, I would create several tables for trials, studies, organization, etc.
 
 type NSCLCIntervention = {
   type: string;
