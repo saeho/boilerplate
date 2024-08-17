@@ -124,9 +124,6 @@ const ClinicalTrialsTable = memo((p: ClinicalTrialsProps) => {
   const { clinicalTrials, loading, searchQuery } = p;
   const notReady = !clinicalTrials;
 
-  console.log(clinicalTrials);
-
-
   if (notReady) {
     return <p>{i18n.t('form.loading_')}</p>;
   }
